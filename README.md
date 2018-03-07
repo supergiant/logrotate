@@ -1,0 +1,2 @@
+# logrotate
+simple logrotate
