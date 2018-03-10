@@ -4,4 +4,4 @@ RUN apk add logrotate
 RUN echo "*/15 * * * * root /etc/logrotate" >> rotatecron
 run crontab rotatecron
 ADD ./logrotate.conf /etc/logrotate.conf
-CMD sleep infinity
+CMD sleep 1000000000
