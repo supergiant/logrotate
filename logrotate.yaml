@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: logrotate
+  labels:
+    app: logrotate
+spec:
+  template:
+    metadata:
+      labels:
+        app: logrotate
+    spec:
+      containers:
+      - name: logrotate
+        image: supergiant/logrotate:latest
+        imagePullPolicy: always
