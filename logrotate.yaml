@@ -13,7 +13,7 @@ spec:
       containers:
       - name: logrotate
         image: supergiant/logrotate:latest
-        imagePullPolicy: always
+        imagePullPolicy: Always
         volumeMounts:
         - name: host
           mountPath: /host
