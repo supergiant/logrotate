@@ -1,7 +1,9 @@
 FROM alpine
-RUN apk update
-RUN apk add logrotate
-RUN echo "*/15 * * * * root logrotate /etc/logrotate.conf" >> rotatecron
-run crontab rotatecron
 ADD ./logrotate.conf /etc/logrotate.conf
-CMD sleep 1000000000
+RUN apk update \
+    && apk add logrotate \
+    && touch crontab.tmp \
+    && echo '*/1 * * * * root logrotate /etc/logrotate.conf' > crontab.tmp \
+    && crontab crontab.tmp \
+    && rm -rf crontab.tmp
+CMD ["crond", "-l", "2", "-f"]
