@@ -14,3 +14,10 @@ spec:
       - name: logrotate
         image: supergiant/logrotate:latest
         imagePullPolicy: always
+        volumeMounts:
+        - name: host
+          mountPath: /host
+      volumes:
+      - name: host
+        hostPath:
+          path: /
