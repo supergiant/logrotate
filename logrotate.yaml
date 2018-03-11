@@ -14,6 +14,8 @@ spec:
       - name: logrotate
         image: supergiant/logrotate:latest
         imagePullPolicy: Always
+        securityContext:
+          privileged: true
         volumeMounts:
         - name: host
           mountPath: /host
