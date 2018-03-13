@@ -1,5 +1,5 @@
 # logrotate
-simple logrotate
+(Fore more information on how logrotate works, see this guide: http://aarvik.dk/a-simple-guide-on-logrotate/)
 
 # Setup
 
