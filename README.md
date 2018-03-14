@@ -1,5 +1,5 @@
 # logrotate
-(Fore more information on how logrotate works, see this guide: http://aarvik.dk/a-simple-guide-on-logrotate/)
+(Fore more information on how logrotate works, see these guides: https://www.techrepublic.com/article/manage-linux-log-files-with-logrotate/, http://aarvik.dk/a-simple-guide-on-logrotate/)
 
 # Setup
 
