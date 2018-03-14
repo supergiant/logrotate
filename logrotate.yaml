@@ -23,4 +23,4 @@ spec:
       - name: host
         hostPath:
           path: /
-
+# Comment prevents copy-paste format issue.
