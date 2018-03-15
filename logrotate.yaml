@@ -19,6 +19,9 @@ spec:
         volumeMounts:
         - name: host
           mountPath: /host
+        resources:
+          requests:
+            cpu: "50m"
       volumes:
       - name: host
         hostPath:
