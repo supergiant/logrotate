@@ -1,4 +1,6 @@
 # logrotate
+:exclamation: Currently, we're using `logtruncate-original.yaml`. This is rolled out in all regions, currently, but there are still ghost files filling up minions that it doesn't truncate (although we could easily make it do that). :exclamation:
+
 (Fore more information on how logrotate works, see these guides: https://www.techrepublic.com/article/manage-linux-log-files-with-logrotate/, http://aarvik.dk/a-simple-guide-on-logrotate/)
 
 # Setup
