@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: logtruncate
+data:
+    logtruncate.sh: |
+      #!/bin/sh
+
+      # Pull up all log files
+      (find /host/var/log -name "*.log" ; find /host/var/lib/docker/containers -name "*.log") \
+          | while read -r p; do
+              if [ `stat -c %s "$p"` -gt 500000000 ]; then
+                  truncate "$p" --size=0
+              fi
+          done
+---
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  name: logtruncate
+spec:
+  template:
+    metadata:
+      labels:
+        app: logtruncate
+    spec:
+      containers:
+      - image: alpine
+        name: alpine
+        command: ["crond"]
+        args: ["-l", "2", "-f"]
+        volumeMounts:
+        - name: host
+          mountPath: /host
+        - name: logtruncate
+          mountPath: /etc/periodic/15min
+        resources:
+          requests:
+            cpu: 0
+      volumes:
+      - name: host
+        hostPath:
+          path: /
+      - name: logtruncate
+        configMap:
+          name: logtruncate
+          defaultMode: 0755
